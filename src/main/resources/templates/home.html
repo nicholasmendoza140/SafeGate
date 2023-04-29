@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello!</title>
+</head>
+<body>
+<h1>SafeGate</h1>
+
+<h2>Passwords</h2>
+
+<div>
+    <table>
+        <tr th:each="login: ${logins}"}>
+            <td th:text="${login.name}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
