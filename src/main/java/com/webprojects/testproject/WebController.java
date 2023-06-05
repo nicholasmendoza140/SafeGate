@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -54,5 +51,20 @@ public class WebController {
         List<Login> logins = loginRepository.findAll();
         model.addAttribute("logins", logins);
         return "home";
+    }
+
+    @RequestMapping(value="/loginDelete/{id}")
+    public String loginDelete(@PathVariable("id") int id, Model model) throws SQLException {
+        /*Connection connection;
+        connection = DBConnection.getConnection();
+
+        String deleteQuery = "DELETE FROM login WHERE id = "+id+"";
+        PreparedStatement statement = connection.prepareStatement(deleteQuery);
+        statement.executeUpdate();*/
+        loginRepository.deleteById(id);
+
+        List<Login> logins = loginRepository.findAll();
+        model.addAttribute("logins", logins);
+        return "redirect:/";
     }
 }

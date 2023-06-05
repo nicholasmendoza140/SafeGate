@@ -18,6 +18,9 @@
     <table>
         <tr th:each="login: ${logins}"}>
             <td th:text="${login.name}"></td>
+            <td>
+                <a th:href="@{/loginDelete/{id}(id=${login.id})}" role="button"}>Delete</a>
+            </td>
         </tr>
     </table>
 </div>

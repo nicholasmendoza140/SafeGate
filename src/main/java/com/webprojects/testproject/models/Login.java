@@ -17,6 +17,7 @@ public class Login {
     private String username;
     private String password;
 
+    public int getId() { return id; }
     public String getName() {
         return name;
     }
