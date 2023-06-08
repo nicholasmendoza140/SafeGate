@@ -3,22 +3,26 @@
                 xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Hello!</title>
+    <title>Home</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
 </head>
 <body>
-<h1>SafeGate</h1>
-
-<h2>Passwords</h2>
-
+<div class="header">
+    <h1>SafeGate</h1>
+</div>
+<div class="header2">
+    <h2>Passwords</h2>
+</div>
 <form method="GET" action="/addLogin">
-    <input type="submit" value="Add Login">
+    <input type="submit" value="Add Login" style="margin-left:80px;padding:10px;margin-bottom:10px">
 </form>
 
 <div>
-    <table>
+    <table style="margin-left: 70px">
         <tr th:each="login: ${logins}"}>
-            <td th:text="${login.name}"></td>
+            <td th:text="${login.name}" class="item"></td>
             <td>
+                <a th:href="@{/viewLogin/{id}(id=${login.id})}" role="button"}>View</a>
                 <a th:href="@{/loginDelete/{id}(id=${login.id})}" role="button"}>Delete</a>
             </td>
         </tr>

@@ -1,0 +1,17 @@
+.header {
+    padding: 30px;
+    margin-left: 50px;
+}
+
+.header2 {
+    padding: 30px;
+    margin-left: 50px;
+}
+
+td.item {
+    padding: 10px;
+}
+
+p.item {
+    margin-left: 80px
+}

@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 
 @Controller
@@ -62,9 +63,18 @@ public class WebController {
         PreparedStatement statement = connection.prepareStatement(deleteQuery);
         statement.executeUpdate();*/
         loginRepository.deleteById(id);
-
         List<Login> logins = loginRepository.findAll();
         model.addAttribute("logins", logins);
         return "redirect:/";
+    }
+
+    @RequestMapping(value="/viewLogin/{id}")
+    public String viewLogin(@PathVariable("id") int id, Model model) {
+        Optional<Login> login = loginRepository.findById(id);
+        Login login1 = login.get();
+        System.out.println(login);
+        System.out.println(login1.getName());
+        model.addAttribute("login", login1);
+        return "viewLogin";
     }
 }
