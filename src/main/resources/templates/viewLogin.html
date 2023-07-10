@@ -12,8 +12,22 @@
 </div>
 <div>
     <p th:text="'Username: ' + ${login.username}" class="item"></p>
-    <p th:text="'Password: ' + ${login.password}" class="item"></p>
+    <p id="passwordField" th:text="'Password: ' + ${login.password}" class="item"></p>
+    <button id="toggleButton" onclick="togglePasswordVisibility()" style="margin-left:80px">Show Password</button>
 </div>
 
+<script>
+  var passwordField = document.getElementById('passwordField');
+  var originalPassword = passwordField.innerHTML;
+  var isPasswordVisible = false;
+  var toggleButton = document.getElementById('toggleButton');
+  passwordField.innerHTML = '*'.repeat(originalPassword.length);
+
+  function togglePasswordVisibility() {
+    isPasswordVisible = !isPasswordVisible;
+    passwordField.innerHTML = isPasswordVisible ? originalPassword : '*'.repeat(originalPassword.length);
+    toggleButton.innerText = isPasswordVisible ? 'Hide Password': 'Show Password';
+  }
+</script>
 </body>
 </html>
